@@ -1,54 +1,57 @@
 <template lang="pug">
     #app.flex.flex-column.vh-100.avenir
         #top.bb.b--gray.bg-washed-yellow
-            h1 Community Map
+        //- <style="position:fixed;top:278px;right:93px;color:#ffffff;">
+
         #middle.flex.flex-auto
             #sidebar.br.b--light-gray.overflow-auto.pa2-ns(:class="{ collapsed: !sidebarOpen}")
                 .container.br.bg-white.b--light-gray.overflow-auto.pa2.bw2
-                    .b.i See the README for tips on customising.              
-                    FeatureInfo
+                    About(@close="sidebarOpen = false")
+            //- FeatureInfo
             #sidebar-rim.relative.br.b--gray.bw2(v-show="!sidebarOpen"  style="width:20px" @click="sidebarOpen = true")
             #map-container.relative.flex-auto
                 Map
-                #sidebarToggle.absolute.bg-white.f3.br.bt.bb.br--right.br-100.b--magenta.bw1.magenta.pa1.pointer.grow.fw8(@click="sidebarOpen = !sidebarOpen")
+                #sidebarToggle.absolute.bg-white.f3.br.bt.bb.br--right.br-100.b--magenta.bw1.magenta.pa1.pointer.grow.fw8(@click="sidebarOpen = !sidebarOpen" style="z-index:100")
                   span(v-if="!sidebarOpen") &rarr;
                   span(v-if="sidebarOpen") &larr;
                 #overlay.absolute.h-100.w-100
-                //- Legend
+                Legend
         #bottom.bt.b--light-gray.flex-none
 </template>
 
 <script>
-import Map from "./components/Map.vue";
-import FeatureInfo from "./components/FeatureInfo.vue";
-import Legend from "@/components/Legend.vue";
+import Map from './components/Map.vue';
+import FeatureInfo from './components/FeatureInfo.vue';
+import Legend from '@/components/Legend.vue';
 
-import { EventBus } from "./EventBus";
+import { EventBus } from './EventBus';
+import About from '@/components/About.vue';
 window.app = {};
 export default {
-    name: "app",
+    name: 'app',
     components: {
         Map,
         FeatureInfo,
-        Legend
+        Legend,
+        About,
     },
     data() {
         return {
-            sidebarOpen: true
+            sidebarOpen: true,
         };
     },
     created() {
         window.app.App = this;
-        EventBus.$on("select-feature", () => (this.sidebarOpen = true));
+        EventBus.$on('select-feature', () => (this.sidebarOpen = true));
     },
     watch: {
         sidebarOpen() {
             this.$nextTick(() => window.map.resize());
-        }
-    }
+        },
+    },
 };
 
-require("tachyons/css/tachyons.min.css");
+require('tachyons/css/tachyons.min.css');
 </script>
 
 <style scoped>

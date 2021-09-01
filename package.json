@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-nullish-coalescing-operator": "^7.8.3",
+    "@mapbox/mapbox-gl-geocoder": "^4.7.3",
     "mapbox-gl": "^1.6.1",
     "mapbox-gl-utils": "^0.39.0",
     "maplibre-gl": "^1.15.2",
