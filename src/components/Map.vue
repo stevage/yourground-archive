@@ -68,12 +68,11 @@ export default {
 
             map.U.hoverPointer(circleLayers);
             let popup;
-            // circleLayers.forEach((l) => map.on('mouseover', l, hoverPoint));
             map.on('mousemove', (e) => {
                 const features = map.queryRenderedFeatures(e.point, {
                     layers: circleLayers,
                 });
-                // console.log(features);
+                console.log(features);
                 hoverPoint(features[0]);
             });
             map.U.clickLayer(circleLayers, ({ features }) => {

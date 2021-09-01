@@ -15,7 +15,7 @@
                   span(v-if="!sidebarOpen") &rarr;
                   span(v-if="sidebarOpen") &larr;
                 #overlay.absolute.h-100.w-100
-                Legend
+                    Legend
         #bottom.bt.b--light-gray.flex-none
 </template>
 
