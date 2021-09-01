@@ -206,4 +206,8 @@ export default {
 .demographic {
     text-align: center;
 }
+
+.mapboxgl-popup-content {
+    box-shadow: 4px 4px 2px 2px hsla(0, 0%, 0%, 0.5);
+}
 </style>
