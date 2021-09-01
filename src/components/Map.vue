@@ -88,7 +88,7 @@ export default {
                     .filter(Boolean)
                     .join(', ');
                 // const rating = [
-                console.log(p);
+                // console.log(p);
                 const html =
                     `
                         <h4 class="stress-${p.Stress_rating}">${p.Name}</h4>
